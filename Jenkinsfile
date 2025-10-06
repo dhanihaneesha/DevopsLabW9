@@ -7,11 +7,14 @@ pipeline{
                 bat "docker build -t kubedemo:v1 ."
             }
         }
-        stage('Docker Login'){
-            steps{
-                bat 'docker login -u dhanihaneesha -p Haneesha@2004'
-            }
-        }
+        steps {
+    withCredentials([usernamePassword(credentialsId: 'dockerhub-creds', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
+        bat '''
+            docker login -u %DOCKER_USER% -p %DOCKER_PASS%
+        '''
+    }
+}
+
         stage('push Docker image to Dockerhub'){
             steps{
                 echo "push Docker image to Dockerhub..."
@@ -26,4 +29,5 @@ pipeline{
             }
         }
     }
+
 }
