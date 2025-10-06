@@ -1,6 +1,6 @@
-apiVersion apps/v1
+apiVersion: apps/v1
 kind: Deployment
-metdata:
+metadata:
   name: kubedemoapp-deployment
 spec:
   replicas: 4
@@ -16,4 +16,5 @@ spec:
       - name: kubedemoapp
         image: dhanihaneesha/sample:v1
         ports:
+
         - containerPort: 5000
