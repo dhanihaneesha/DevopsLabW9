@@ -14,8 +14,9 @@ spec:
     spec:
       containers:
       - name: kubedemoapp
-        image: dhanihaneesha/demoweek8:t1
+        image: dhanihaneesha/sample:v1
         ports:
 
         - containerPort: 5000
+
 
